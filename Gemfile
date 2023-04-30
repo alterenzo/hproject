@@ -40,6 +40,7 @@ gem 'jbuilder'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
+gem 'state_machines-activerecord'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -59,6 +60,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'factory_bot_rails'
 end
 
 group :test do
