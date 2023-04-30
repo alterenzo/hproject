@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_185207) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_30_201218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_185207) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.check_constraint "state::text = ANY (ARRAY['available'::character varying, 'under_offer'::character varying, 'waiting_for_viewing'::character varying, 'sold'::character varying]::text[])", name: "valid_state"
   end
 
 end
