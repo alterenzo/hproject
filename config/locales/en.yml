@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  project_enquiry:
+    notice_created: Property enquiry was successfully created.
+    notice_updated: Property enquiry was successfully updated.
+    notice_deleted: Property enquiry was successfully destroyed.

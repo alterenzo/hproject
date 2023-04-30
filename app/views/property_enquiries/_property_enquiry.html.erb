@@ -1,0 +1,17 @@
+<div id="<%= dom_id property_enquiry %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= property_enquiry.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">State:</strong>
+    <%= property_enquiry.state %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this property enquiry", property_enquiry, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this property enquiry', edit_property_enquiry_path(property_enquiry), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
