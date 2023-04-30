@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PropertyEnquiry do
-  let(:property) { FactoryBot.create(:property_enquiry) }
+  let(:property) { create(:property_enquiry) }
 
   describe 'states' do
     describe ':available' do
