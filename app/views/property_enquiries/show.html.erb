@@ -4,7 +4,13 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @property_enquiry %>
+    <div id="<%= dom_id @property_enquiry %>" class="w-full">
+      <div class="flex justify-center">
+        <h1 class="font-bold text-4xl mr-8"><%= @property_enquiry.address %></h1>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block"><%= @property_enquiry.state %></p>
+      </div>
+    </div>
+
     <%= render "property_enquiries/comments", property_enquiry: @property_enquiry %>
 
     <%= form_with(model: @property_enquiry, class: "update-action-form") do |form| %>
