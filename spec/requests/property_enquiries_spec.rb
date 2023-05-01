@@ -24,7 +24,7 @@ RSpec.describe '/property_enquiries' do
   # PropertyEnquiry. As you add validations to PropertyEnquiry, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { address: 'Park Lane'}
+    { address: 'Park Lane' }
   end
 
   let(:invalid_attributes) do
