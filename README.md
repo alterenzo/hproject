@@ -1,24 +1,26 @@
-# README
+# H
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usage
 
-Things you may want to cover:
+1. Install dependencies with `bundle`
+2. Start the postgresql service with `brew services start postgresql`
+3. Create the database with `rails db:create`
+4. Run the migrations with `rails db:migrate`
+5. Launch the server with `bundle exec rails s`
 
-* Ruby version
+### Product Owner Q/A
 
-* System dependencies
+Q: Who should be able to leave comments? Should this limited to authenticated users
+A: Yes, only authenticated users should be able to leave comments
 
-* Configuration
+Q: Should it be possible to delete projects?
+A: At this moment we can consider it out of scope.
 
-* Database creation
+Q: What kind of projects are we talking about?
+A: A project should revolve around purchasing a house, so the state transitions should reflect that.
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+    
 
-* ...
