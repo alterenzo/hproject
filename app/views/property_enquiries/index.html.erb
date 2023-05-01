@@ -3,12 +3,12 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mx-auto max-w-3xl mb-8">
     <h1 class="font-bold text-4xl">Property enquiries</h1>
     <%= link_to 'New property enquiry', new_property_enquiry_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="property_enquiries" class="min-w-full">
+  <div id="property_enquiries" class="mx-auto">
     <%= render @property_enquiries %>
   </div>
 </div>
