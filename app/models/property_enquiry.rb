@@ -5,6 +5,10 @@ class PropertyEnquiry < ApplicationRecord
   has_many :event_logs, dependent: :destroy
 
   state_machine initial: :available do
+    after_transition all => all do |property_enquiry, transition|
+      property_enquiry.log_event(transition)
+    end
+
     state :available do
       transition to: :waiting_for_viewing, on: :schedule_viewing
       transition to: :under_offer, on: :submit_offer
@@ -19,5 +23,10 @@ class PropertyEnquiry < ApplicationRecord
       transition to: :under_offer, on: :submit_offer
       transition to: :available, on: :reset_availability
     end
+  end
+
+  def log_event(transition)
+    event_logs.create(from_state: self.class.human_state_name(transition.from),
+                      to_state: self.class.human_state_name(transition.to))
   end
 end

@@ -5,6 +5,24 @@ require 'rails_helper'
 RSpec.describe PropertyEnquiry do
   let(:property) { create(:property_enquiry) }
 
+  describe 'event logging' do
+    it 'logs event after each transition' do
+      expect do
+        property.schedule_viewing!
+        property.submit_offer!
+        property.accept_offer!
+      end.to change(EventLog, :count).by(3)
+    end
+
+    it 'stores the from and to states in human friendly strings' do
+      property.schedule_viewing!
+      expect(property.event_logs.count).to be(1)
+      event_log = property.event_logs.last
+      expect(event_log.from_state).to eq 'available'
+      expect(event_log.to_state).to eq 'waiting for viewing'
+    end
+  end
+
   describe 'states' do
     describe ':available' do
       it 'is an initial state' do
