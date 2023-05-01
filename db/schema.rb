@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_213439) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_231440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_213439) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["property_enquiry_id"], name: "index_comments_on_property_enquiry_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "event_logs", force: :cascade do |t|
@@ -36,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_213439) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "state::text = ANY (ARRAY['available'::character varying, 'under_offer'::character varying, 'waiting_for_viewing'::character varying, 'sold'::character varying]::text[])", name: "valid_state"
+    t.check_constraint "state::text = ANY (ARRAY['available'::character varying::text, 'under_offer'::character varying::text, 'waiting_for_viewing'::character varying::text, 'sold'::character varying::text])", name: "valid_state"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,5 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_213439) do
   end
 
   add_foreign_key "comments", "property_enquiries"
+  add_foreign_key "comments", "users"
   add_foreign_key "event_logs", "property_enquiries"
 end
