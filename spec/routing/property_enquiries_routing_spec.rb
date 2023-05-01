@@ -16,10 +16,6 @@ RSpec.describe PropertyEnquiriesController do
       expect(get: '/property_enquiries/1').to route_to('property_enquiries#show', id: '1')
     end
 
-    it 'routes to #edit' do
-      expect(get: '/property_enquiries/1/edit').to route_to('property_enquiries#edit', id: '1')
-    end
-
     it 'routes to #create' do
       expect(post: '/property_enquiries').to route_to('property_enquiries#create')
     end
@@ -30,10 +26,6 @@ RSpec.describe PropertyEnquiriesController do
 
     it 'routes to #update via PATCH' do
       expect(patch: '/property_enquiries/1').to route_to('property_enquiries#update', id: '1')
-    end
-
-    it 'routes to #destroy' do
-      expect(delete: '/property_enquiries/1').to route_to('property_enquiries#destroy', id: '1')
     end
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PropertyEnquiriesController < ApplicationController
-  before_action :set_property_enquiry, only: %i[show edit update destroy]
+  before_action :set_property_enquiry, only: %i[show update]
 
   # GET /property_enquiries or /property_enquiries.json
   def index
@@ -15,9 +15,6 @@ class PropertyEnquiriesController < ApplicationController
   def new
     @property_enquiry = PropertyEnquiry.new
   end
-
-  # GET /property_enquiries/1/edit
-  def edit; end
 
   # POST /property_enquiries or /property_enquiries.json
   def create
@@ -48,16 +45,6 @@ class PropertyEnquiriesController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @property_enquiry.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /property_enquiries/1 or /property_enquiries/1.json
-  def destroy
-    @property_enquiry.destroy
-
-    respond_to do |format|
-      format.html { redirect_to property_enquiries_url, notice: I18n.t('project_enquiry.notice_deleted') }
-      format.json { head :no_content }
     end
   end
 
