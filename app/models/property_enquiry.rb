@@ -2,6 +2,7 @@
 
 class PropertyEnquiry < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :event_logs, dependent: :destroy
 
   state_machine initial: :available do
     state :available do

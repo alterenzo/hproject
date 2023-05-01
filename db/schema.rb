@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_123835) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_184424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_123835) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_enquiry_id"], name: "index_comments_on_property_enquiry_id"
+  end
+
+  create_table "event_logs", force: :cascade do |t|
+    t.bigint "property_enquiry_id", null: false
+    t.string "from_state"
+    t.string "to_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_enquiry_id"], name: "index_event_logs_on_property_enquiry_id"
   end
 
   create_table "property_enquiries", force: :cascade do |t|
@@ -43,4 +52,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_123835) do
   end
 
   add_foreign_key "comments", "property_enquiries"
+  add_foreign_key "event_logs", "property_enquiries"
 end
