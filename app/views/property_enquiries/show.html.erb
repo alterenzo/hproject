@@ -11,21 +11,23 @@
       </div>
     </div>
 
-    <%= render "property_enquiries/event_logs", property_enquiry: @property_enquiry %>
-    <%= render "property_enquiries/comments", property_enquiry: @property_enquiry %>
-
-    <%= form_with(model: @property_enquiry, class: "update-action-form") do |form| %>
-      <div class="flex-wrap">
-        <div class="my-5">
+    <%= form_with(model: @property_enquiry, class: "update-action-form w-full flex justify-center") do |form| %>
+      <div class="flex">
+        <div class="my-5 mr-5">
           <%= form.label :action %>
-          <%= form.select :action, @property_enquiry.human_friendly_events , class: "" %>
+          <%= form.select :action, @property_enquiry.human_friendly_events, {}, class: "rounded-lg py-3" %>
         </div>
 
         <div class="my-5">
-          <%= form.submit "Submit action", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+          <%= form.submit "Submit action", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
         </div>
       </div>
     <% end %>
+
+    <%= render "property_enquiries/event_logs", property_enquiry: @property_enquiry %>
+    <%= render "property_enquiries/comments", property_enquiry: @property_enquiry %>
+
     <%= link_to 'Back to property_enquiries', property_enquiries_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
+
