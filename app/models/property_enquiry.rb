@@ -25,6 +25,10 @@ class PropertyEnquiry < ApplicationRecord
     end
   end
 
+  def human_friendly_state
+    self.class.human_state_name(state)
+  end
+
   def log_event(transition)
     event_logs.create(from_state: self.class.human_state_name(transition.from),
                       to_state: self.class.human_state_name(transition.to))
