@@ -15,4 +15,11 @@ RSpec.describe 'property_enquiries/show' do
     expect(rendered).to match(/Address/)
     expect(rendered).to match(/available/)
   end
+
+  it 'renders comments' do
+    assign(:property_enquiry, create(:property_enquiry, :with_comments))
+    render
+
+    expect(rendered).to match(/MyComment/)
+  end
 end
