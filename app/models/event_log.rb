@@ -2,4 +2,5 @@
 
 class EventLog < ApplicationRecord
   belongs_to :property_enquiry
+  broadcasts_to :property_enquiry
 end
