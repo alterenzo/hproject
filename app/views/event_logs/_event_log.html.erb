@@ -1,0 +1,11 @@
+<div id="<%= dom_id(event_log) %>">
+  <div class="flex min-w-full">
+    <div class="px-10 min-w-full my-5">
+      <div class="bg-white max-w-xl rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500 min-w-full">
+        <div class="mt-4">
+          <p class="mt-4 text-md text-gray-600"><%= "Transitioned from #{event_log.from_state} to #{event_log.to_state} #{time_ago_in_words(event_log.created_at)} ago" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

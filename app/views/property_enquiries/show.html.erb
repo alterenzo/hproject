@@ -11,6 +11,7 @@
       </div>
     </div>
 
+    <%= render "property_enquiries/event_logs", property_enquiry: @property_enquiry %>
     <%= render "property_enquiries/comments", property_enquiry: @property_enquiry %>
 
     <%= form_with(model: @property_enquiry, class: "update-action-form") do |form| %>
