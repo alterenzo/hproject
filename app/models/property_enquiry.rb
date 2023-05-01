@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PropertyEnquiry < ApplicationRecord
+  has_many :comments, dependent: :destroy
+
   state_machine initial: :available do
     state :available do
       transition to: :waiting_for_viewing, on: :schedule_viewing
