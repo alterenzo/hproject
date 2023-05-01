@@ -7,11 +7,11 @@ RSpec.describe 'property_enquiries/index' do
     assign(:property_enquiries, [
              PropertyEnquiry.create!(
                address: 'Address',
-               state: 'State'
+               state: 'available'
              ),
              PropertyEnquiry.create!(
                address: 'Address',
-               state: 'State'
+               state: 'available'
              )
            ])
   end

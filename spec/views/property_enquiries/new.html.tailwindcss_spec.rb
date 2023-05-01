@@ -6,7 +6,7 @@ RSpec.describe 'property_enquiries/new' do
   before do
     assign(:property_enquiry, PropertyEnquiry.new(
                                 address: 'MyString',
-                                state: 'MyString'
+                                state: 'available'
                               ))
   end
 
@@ -15,8 +15,6 @@ RSpec.describe 'property_enquiries/new' do
 
     assert_select 'form[action=?][method=?]', property_enquiries_path, 'post' do
       assert_select 'input[name=?]', 'property_enquiry[address]'
-
-      assert_select 'input[name=?]', 'property_enquiry[state]'
     end
   end
 end

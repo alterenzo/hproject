@@ -6,13 +6,13 @@ RSpec.describe 'property_enquiries/show' do
   before do
     assign(:property_enquiry, PropertyEnquiry.create!(
                                 address: 'Address',
-                                state: 'State'
+                                state: 'available'
                               ))
   end
 
   it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Address/)
-    expect(rendered).to match(/State/)
+    expect(rendered).to match(/available/)
   end
 end
