@@ -6,7 +6,19 @@
 
     <%= render @property_enquiry %>
 
-    <%= link_to 'Edit this property_enquiry', edit_property_enquiry_path(@property_enquiry), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= form_with(model: @property_enquiry, class: "update-action-form") do |form| %>
+      <div class="flex-wrap">
+        <div class="my-5">
+          <%= form.label :action %>
+          <%= form.select :action, @property_enquiry.state_events , class: "" %>
+        </div>
+
+        <div class="my-5">
+          <%= form.submit "Submit action", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this property_enquiry', property_enquiry_path(@property_enquiry), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>

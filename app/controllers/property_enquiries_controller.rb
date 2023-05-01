@@ -36,7 +36,7 @@ class PropertyEnquiriesController < ApplicationController
   # PATCH/PUT /property_enquiries/1 or /property_enquiries/1.json
   def update
     respond_to do |format|
-      if @property_enquiry.update(property_enquiry_params)
+      if @property_enquiry.fire_events(property_enquiry_params[:action])
         format.html do
           redirect_to property_enquiry_url(@property_enquiry), notice: I18n.t('project_enquiry.notice_updated')
         end
@@ -57,6 +57,6 @@ class PropertyEnquiriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def property_enquiry_params
-    params.require(:property_enquiry).permit(:address, :state)
+    params.require(:property_enquiry).permit(:address, :action)
   end
 end
