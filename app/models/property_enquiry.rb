@@ -29,6 +29,12 @@ class PropertyEnquiry < ApplicationRecord
     self.class.human_state_name(state)
   end
 
+  def human_friendly_events
+    state_events.map do |event|
+      [self.class.human_state_event_name(event), event]
+    end
+  end
+
   def log_event(transition)
     event_logs.create(from_state: self.class.human_state_name(transition.from),
                       to_state: self.class.human_state_name(transition.to))
