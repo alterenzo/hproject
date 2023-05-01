@@ -36,7 +36,8 @@ class PropertyEnquiriesController < ApplicationController
   # PATCH/PUT /property_enquiries/1 or /property_enquiries/1.json
   def update
     respond_to do |format|
-      if @property_enquiry.fire_events(property_enquiry_params[:action])
+      action = property_enquiry_params[:action]
+      if action && @property_enquiry.fire_events(action)
         format.html do
           redirect_to property_enquiry_url(@property_enquiry), notice: I18n.t('project_enquiry.notice_updated')
         end

@@ -15,15 +15,20 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/property_enquiries' do
+  before do
+    user = create(:user)
+    sign_in user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # PropertyEnquiry. As you add validations to PropertyEnquiry, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { address: 'Park Lane'}
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { address: nil }
   end
 
   describe 'GET /index' do
@@ -45,14 +50,6 @@ RSpec.describe '/property_enquiries' do
   describe 'GET /new' do
     it 'renders a successful response' do
       get new_property_enquiry_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      property_enquiry = PropertyEnquiry.create! valid_attributes
-      get edit_property_enquiry_url(property_enquiry)
       expect(response).to be_successful
     end
   end
@@ -88,14 +85,14 @@ RSpec.describe '/property_enquiries' do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { action: :submit_offer }
       end
 
       it 'updates the requested property_enquiry' do
         property_enquiry = PropertyEnquiry.create! valid_attributes
         patch property_enquiry_url(property_enquiry), params: { property_enquiry: new_attributes }
         property_enquiry.reload
-        skip('Add assertions for updated state')
+        expect(property_enquiry).to be_under_offer
       end
 
       it 'redirects to the property_enquiry' do
@@ -112,21 +109,6 @@ RSpec.describe '/property_enquiries' do
         patch property_enquiry_url(property_enquiry), params: { property_enquiry: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested property_enquiry' do
-      property_enquiry = PropertyEnquiry.create! valid_attributes
-      expect do
-        delete property_enquiry_url(property_enquiry)
-      end.to change(PropertyEnquiry, :count).by(-1)
-    end
-
-    it 'redirects to the property_enquiries list' do
-      property_enquiry = PropertyEnquiry.create! valid_attributes
-      delete property_enquiry_url(property_enquiry)
-      expect(response).to redirect_to(property_enquiries_url)
     end
   end
 end
