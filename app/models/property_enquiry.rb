@@ -4,6 +4,8 @@ class PropertyEnquiry < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :event_logs, dependent: :destroy
 
+  validates :address, presence: true
+
   state_machine initial: :available do
     after_transition all => all do |property_enquiry, transition|
       property_enquiry.log_event(transition)
