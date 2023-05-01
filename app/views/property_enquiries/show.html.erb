@@ -5,6 +5,7 @@
     <% end %>
 
     <%= render @property_enquiry %>
+    <%= render "property_enquiries/comments", property_enquiry: @property_enquiry %>
 
     <%= form_with(model: @property_enquiry, class: "update-action-form") do |form| %>
       <div class="flex-wrap">

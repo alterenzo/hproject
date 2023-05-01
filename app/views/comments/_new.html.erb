@@ -1,0 +1,5 @@
+<%= form_with model: [ property_enquiry, Comment.new ] do |form| %>
+  New comment:<br>
+  <%= form.text_area :content, size: "20x5" %>
+  <%= form.submit %>
+<% end %>
